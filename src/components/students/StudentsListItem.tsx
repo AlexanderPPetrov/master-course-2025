@@ -5,10 +5,10 @@ type Props = {
 }
 
 function StudentsListItem({ student } : Props) {
-    return <div>
+    return <li className="list-group-item">
         <span>име:</span> {student.name},
         <span>години:</span> {student.age}
-    </div>
+    </li>
 }
 
 export default StudentsListItem

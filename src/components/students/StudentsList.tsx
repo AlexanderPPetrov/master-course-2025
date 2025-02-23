@@ -13,9 +13,9 @@ function StudentsList({ students } : Props) {
                 />
     })
 
-    return <div id="students-list">
+    return <ul className="students-list list-group">
         {studentsComponents}
-    </div>
+    </ul>
 }
 
 export default StudentsList

@@ -17,7 +17,8 @@ const students: Student[] = [
 ]
 
 function StudentsContainer() {
-    return <div id="students-container">
+    return <div id="students-container" 
+                className="card">
         <StudentsList students={students}/>
     </div>
 }
