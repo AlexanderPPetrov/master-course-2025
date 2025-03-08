@@ -1,26 +1,23 @@
 import MoviesList from "./MoviesList"
-import SearchInput from "../ui/SearchInput"
 // import type { Student } from "./types"
-import { useState } from "react"
-import NoResults from "../NoResults"
-import { useEffect } from "react"
 import { searchMovie } from "@/api/movies"
-import type { Movie } from "./types"
+import { useQuery } from '@tanstack/react-query'
+import NoResults from "../NoResults"
+
 type Props = {
     searchValue: string
 }
 
 function MoviesContainer( { searchValue } : Props) {
-    const [movies, setMovies] = useState<Movie[]>([])
+   
+    const { data, isLoading } = useQuery({
+        queryKey: ['search-movies', searchValue],
+        queryFn: () => searchMovie(searchValue),
+        enabled: Boolean(searchValue)
+    })
 
-    useEffect(() => {
-        searchMovie(searchValue).then((response) => {
-            const movies = response?.results ?? []
-            setMovies(movies)
-        })
-    }, [searchValue])
-
-
+    const movies = data?.data?.results ?? []
+   
     function getResults() {
         return noResults() ? 
          <NoResults searchValue={searchValue}></NoResults> :
@@ -28,7 +25,7 @@ function MoviesContainer( { searchValue } : Props) {
     }
 
     function noResults() {
-        return !Boolean(movies.length) && searchValue
+        return !Boolean(movies.length) && searchValue && !isLoading
     }
 
     return <div>

@@ -21,8 +21,8 @@ function DefaultLayout({
                 { subHeader }
             </div>
             <div className="row mt-5">
-                <div className="col-md-4">{leftContent}</div>
-                <div className="col-md-8">{rightContent}</div>
+                <div className="col-md-3">{leftContent}</div>
+                <div className="col-md-9">{rightContent}</div>
             </div>
         </div>
     </>
