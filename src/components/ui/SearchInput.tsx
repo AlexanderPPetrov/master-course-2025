@@ -6,13 +6,14 @@ type Props = {
     value: string
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     onClearSearch: () => void
+    inputClass?: string
 }
 
-function SearchInput({ value, onChange, onClearSearch }: Props) {
+function SearchInput({ value, onChange, onClearSearch, inputClass = '' }: Props) {
   return <div className="relative">
     <CiSearch className="absolute top-1/2 left-1 transform -translate-y-1/2" 
               size={22}/>
-    <Input className="px-8"
+    <Input className={`${inputClass} px-8`}
            type="text" 
            value={value}
            onChange={onChange}

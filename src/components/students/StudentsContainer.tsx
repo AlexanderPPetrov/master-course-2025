@@ -2,6 +2,7 @@ import StudentsList from "./StudentsList"
 import SearchInput from "../ui/SearchInput"
 import type { Student } from "./types"
 import { useState } from "react"
+import NoResults from "../NoResults"
 
 
 function StudentsContainer() {
@@ -30,15 +31,28 @@ function StudentsContainer() {
         })
     }
 
+
+    function getResults() {
+        return hasResults() ? 
+        <StudentsList students={getMatchingStudents()}/> :
+        <NoResults searchValue={searchValue}></NoResults>
+    }
+
+    function hasResults() {
+        return Boolean(getMatchingStudents().length)
+    }
+
     return <div>
             <SearchInput 
                         value={searchValue} 
                         onChange={e => setSearchValue(e.target.value)}
                         onClearSearch={() => setSearchValue('')}
+                        inputClass={hasResults() ? '' : 'border !border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500'}
                         />
             <div id="students-container" 
-                        className="card">
-                <StudentsList students={getMatchingStudents()}/>
+                        className="mt-2">
+                            {getResults()}
+                
             </div>
     </div>
     
