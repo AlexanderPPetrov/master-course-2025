@@ -13,9 +13,9 @@ function MoviesList({ movies } : Props) {
                 />
     })
 
-    return <ul className="movies-list list-group">
+    return <div className="movies-list row">
         {moviesComponents}
-    </ul>
+    </div>
 }
 
 export default MoviesList

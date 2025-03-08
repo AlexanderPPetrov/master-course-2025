@@ -10,7 +10,7 @@ type Props = {
 }
 
 function SearchInput({ value, onChange, onClearSearch, inputClass = '' }: Props) {
-  return <div className="relative">
+  return <div className="relative bg-white">
     <CiSearch className="absolute top-1/2 left-1 transform -translate-y-1/2" 
               size={22}/>
     <Input className={`${inputClass} px-8`}
