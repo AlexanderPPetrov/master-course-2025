@@ -1,4 +1,6 @@
+import FavoriteMovies from "@/components/movies/FavoriteMovies"
 import Navbar from "@/components/navbar/Navbar"
+import FloatingDrawer from "@/components/ui/FloatingDrawer"
 
 type Props = {
     leftContent: React.ReactNode
@@ -25,6 +27,9 @@ function DefaultLayout({
                 <div className="col-md-9">{rightContent}</div>
             </div>
         </div>
+        <FloatingDrawer>
+            <FavoriteMovies/>
+        </FloatingDrawer>
     </>
 }
 

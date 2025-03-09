@@ -5,9 +5,12 @@ import HomePage from "./pages/HomePage"
 import StudentsPage from './pages/StudentsPage'
 import MoviesPage from './pages/MoviesPage'
 import { client } from './api/query-client'
+import { Provider } from 'react-redux'
+import store from './redux/store'
 
 function App() {
-  return <QueryClientProvider client={client}>
+  return <Provider store={store}>
+      <QueryClientProvider client={client}>
         <BrowserRouter>
             <Routes>
               <Route path='/' 
@@ -19,6 +22,7 @@ function App() {
             </Routes>
           </BrowserRouter>
   </QueryClientProvider>
+  </Provider>
   
  
 }
