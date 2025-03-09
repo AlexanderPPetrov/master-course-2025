@@ -7,20 +7,23 @@ import MoviesPage from './pages/MoviesPage'
 import { client } from './api/query-client'
 import { Provider } from 'react-redux'
 import store from './redux/store'
+import ApplicationProvider from './providers/ApplicationProvider'
 
 function App() {
   return <Provider store={store}>
       <QueryClientProvider client={client}>
-        <BrowserRouter>
-            <Routes>
-              <Route path='/' 
-                    element={<HomePage/>}/>
-              <Route path='/students' 
-                    element={<StudentsPage/>}/>
-              <Route path='/movies' 
-                    element={<MoviesPage/>}/>
-            </Routes>
-          </BrowserRouter>
+        <ApplicationProvider>
+            <BrowserRouter>
+                  <Routes>
+                  <Route path='/' 
+                        element={<HomePage/>}/>
+                  <Route path='/students' 
+                        element={<StudentsPage/>}/>
+                  <Route path='/movies' 
+                        element={<MoviesPage/>}/>
+                  </Routes>
+            </BrowserRouter>
+        </ApplicationProvider>
   </QueryClientProvider>
   </Provider>
   

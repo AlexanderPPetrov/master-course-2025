@@ -10,6 +10,7 @@ import {
   } from "@/components/ui/navigation-menu"
   
 import NavbarItem from "./NavbarItem"
+import ThemeSwitch from "../ThemeSwitch"
 
 function Navbar() {
     return <NavigationMenu className="mt-3">
@@ -19,6 +20,7 @@ function Navbar() {
       <NavbarItem to="/movies" title={"Филми"}/>
       <NavbarItem to="/books" title={"Книги"}/>
     </NavigationMenuList>
+    <ThemeSwitch/>
   </NavigationMenu>
 }  
 
